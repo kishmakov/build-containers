@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update the package list and install required packages
 RUN apt-get update && apt-get install -y \
+    bash \
     build-essential \
     bison \
     clang++-18 \
@@ -25,10 +26,16 @@ RUN apt-get update && apt-get install -y \
     npm \
     openjdk-8-jre \
     python3-dbusmock \
-    python3.10
+    python3.10 \
+    supervisor
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
 
+# Add supervisor configuration file
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Set the default command to run supervisor
+CMD ["/usr/bin/supervisord"]
