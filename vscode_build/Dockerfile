@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     clang++-18 \
     curl \
     gcc-multilib \
+    git \
     g++-multilib \
     gperf \
     libasound2-dev \
@@ -22,12 +23,14 @@ RUN apt-get update && apt-get install -y \
     libxtst-dev \
     libxss1 \
     libnss3-dev \
-    nodejs \
-    npm \
     openjdk-8-jre \
     python3-dbusmock \
     python3.10 \
     supervisor
+
+# Node
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt-get install -y nodejs
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
