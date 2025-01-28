@@ -1,0 +1,4 @@
+docker exec -it vscode_build /bin/bash
+docker ps -a | grep vscode_build
+docker stop vscode_build
+docker rm vscode_build
