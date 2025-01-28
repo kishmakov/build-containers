@@ -20,6 +20,6 @@ fi
 echo "Starting new container $CONTAINER_NAME..."
 docker run -d \
     --name $CONTAINER_NAME  \
-    --mount type=bind,src=/home/kishmakov/Repos/node-related/electron,dst=/workspace/electron \
-    --mount type=bind,src=/home/kishmakov/Repos/node-related/depot_tools,dst=/workspace/depot_tools \
+    --env GIT_CACHE_PATH=/workspace/git_cache \
+    --mount type=bind,src=/home/kishmakov/Repos/vs,dst=/workspace \
     $IMAGE_NAME
