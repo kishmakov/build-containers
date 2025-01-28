@@ -23,9 +23,11 @@ RUN apt-get update && apt-get install -y \
     libxtst-dev \
     libxss1 \
     libnss3-dev \
+    mc \
     openjdk-8-jre \
     python3-dbusmock \
     python3.10 \
+    tree \
     supervisor
 
 # nodejs
@@ -44,6 +46,9 @@ RUN npm i -g @electron/build-tools
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
+
+# Append Chrome building tools on the PATH
+ENV PATH="/workspace/depot_tools:${PATH}"
 
 # Add supervisor configuration file
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
