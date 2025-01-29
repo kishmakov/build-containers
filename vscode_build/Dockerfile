@@ -45,6 +45,8 @@ RUN npm i -g @electron/build-tools
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /build
+
 WORKDIR /workspace
 
 # Append Chrome building tools on the PATH

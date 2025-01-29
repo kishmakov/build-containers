@@ -2,4 +2,4 @@ docker exec -it vscode_build /bin/bash
 docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
-e init --root=/workspace/eroot --bootstrap testing
+e init --root=/build/eroot --bootstrap testing

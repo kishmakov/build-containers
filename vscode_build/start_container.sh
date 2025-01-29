@@ -20,6 +20,7 @@ fi
 echo "Starting new container $CONTAINER_NAME..."
 docker run -d \
     --name $CONTAINER_NAME  \
-    --env GIT_CACHE_PATH=/workspace/git_cache \
+    --mount type=bind,src=/media/kishmakov/M2/vs,dst=/build \
     --mount type=bind,src=/home/kishmakov/Repos/vs,dst=/workspace \
+    --env GIT_CACHE_PATH=/build/git_cache \
     $IMAGE_NAME
