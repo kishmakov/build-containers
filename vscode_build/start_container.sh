@@ -22,5 +22,6 @@ docker run -d \
     --name $CONTAINER_NAME  \
     --mount type=bind,src=/media/kishmakov/M2/vs,dst=/build \
     --mount type=bind,src=/home/kishmakov/Repos/vs,dst=/workspace \
+    -m 32g \
     --env GIT_CACHE_PATH=/build/git_cache \
     $IMAGE_NAME
