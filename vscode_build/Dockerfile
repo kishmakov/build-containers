@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y \
     supervisor
 
 # nodejs
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get install -y nodejs
 
 # yarn
@@ -45,12 +45,8 @@ RUN npm i -g @electron/build-tools
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /src
 WORKDIR /build
-
-WORKDIR /workspace
-
-# Append Chrome building tools on the PATH
-ENV PATH="/workspace/depot_tools:${PATH}"
 
 # Add supervisor configuration file
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
