@@ -71,6 +71,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # electron build
 RUN npm i -g @electron/build-tools
 RUN chown -R ${USER}:${USER} ${HOME}/.electron_build_tools
+RUN chown -R ${USER}:${USER} ${HOME}/.npm
 
 # Add /src/depot_tools to the PATH
 ENV PATH="/src/depot_tools:${PATH}"
