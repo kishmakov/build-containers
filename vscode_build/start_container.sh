@@ -22,6 +22,7 @@ docker run -d \
     --name $CONTAINER_NAME  \
     --mount type=bind,src=/media/kishmakov/M2/vs,dst=/build \
     --mount type=bind,src=/home/kishmakov/Repos/vs,dst=/src \
+    --ulimit nofile=1000000:1000000 \
     --env GIT_CACHE_PATH=/build/git_cache \
-    -m 32g \
+    -m 16g \
     $IMAGE_NAME
