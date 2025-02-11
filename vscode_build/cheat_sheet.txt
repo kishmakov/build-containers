@@ -2,5 +2,6 @@ docker exec -it vscode_build /bin/bash
 docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
+docker exec -it vscode_build /bin/bash
 e init --root=/build/bd2 --bootstrap testing
 while true; do lsof | wc -l; sleep 1; done
