@@ -3,5 +3,6 @@ docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
 docker exec -it vscode_build /bin/bash
-e init --root=/build/bd2 --bootstrap testing
+e init --root=/build/bd3 --fork kishmakov/electron kishmakov
 while true; do lsof | wc -l; sleep 1; done
+lldb-server-17 gdbserver :1234 --attach <pid>
