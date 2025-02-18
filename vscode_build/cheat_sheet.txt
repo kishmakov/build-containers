@@ -3,6 +3,10 @@ docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
 e init --root=/build/bd3 --fork kishmakov/electron kishmakov
+e init --reclient none --root=/media/kishmakov/M2/vs/bl --fork kishmakov/electron local
 while true; do lsof | wc -l; sleep 1; done
 echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 lldb-server-17 gdbserver :1234 --attach <pid>
+export LDFLAGS="-L/usr/lib/gcc/x86_64-linux-gnu/11/ -lc++"
+export CXX=clang++
+export CXXFLAGS="-stdlib=libc++ -I/usr/lib/llvm-19/include/c++/v1/"
