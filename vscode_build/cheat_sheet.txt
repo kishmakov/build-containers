@@ -3,8 +3,8 @@ docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
 e init --root=/build/bd3 --fork kishmakov/electron kishmakov
-h: e init --reclient none --root=/media/kishmakov/M2/vs/bl --fork kishmakov/electron local
-w: e init --reclient none --root=/home/kishmakov/build/bl --fork kishmakov/electron
+h: e init --reclient none --root=/media/kishmakov/M2/vs/bl --fork kishmakov/electron bl
+w: e init --reclient none --root=/home/kishmakov/build/bl --fork kishmakov/electron bl
 while true; do lsof | wc -l; sleep 1; done
 echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 lldb-server-18 gdbserver :1234 --attach 53733
