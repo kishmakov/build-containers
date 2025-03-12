@@ -2,25 +2,26 @@ docker exec -it vscode_build /bin/bash
 docker ps -a | grep vscode_build
 docker stop vscode_build
 docker rm vscode_build
-e init --root=/build/bd3 --fork kishmakov/electron kishmakov
+
+d: e init --root=/build/bd3 --fork kishmakov/electron kishmakov
 h: e init --reclient none --root=/media/kishmakov/M2/vs/bl --fork kishmakov/electron bl
 w: e init --reclient none --root=/home/kishmakov/build/bl --fork kishmakov/electron bl
-while true; do lsof | wc -l; sleep 1; done
+
 echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
+while true; do lsof | wc -l; sleep 1; done
+
 lldb-server-18 gdbserver :1234 --attach 53733
 h: export LDFLAGS="-L/usr/lib/gcc/x86_64-linux-gnu/11/ -lc++"
 w: export LDFLAGS="-L/usr/lib/gcc/x86_64-linux-gnu/13/ -lc++"
 h: export CXX=clang++-18
 w: export CXX=clang++
+
 export CC=clang-18
 export CXXFLAGS="-stdlib=libc++ -I/usr/lib/llvm-18/include/c++/v1/"
 
-
--> evm.local.json
-"is_debug = true",
-"symbol_level = 2",
-"clang_base_path = \"/usr/local\"",
-"use_sysroot = true"
-
-sudo ln -s /usr/bin/ccache /usr/local/bin/clang
-sudo ln -s /usr/bin/ccache /usr/local/bin/clang++
+-> evm.rd.json
+    "is_debug = true",
+    "symbol_level = 2",
+    "forbid_non_component_debug_builds = false"
+	"cc_wrapper = \"ccache\""
